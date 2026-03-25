@@ -238,8 +238,8 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
     <div class="hero-stats">
       <div class="hero-stat"><div class="stat-num">3</div><div class="stat-lbl">Projects</div></div>
       <div class="hero-stat"><div class="stat-num">3</div><div class="stat-lbl">Domains</div></div>
-      <div class="hero-stat"><div class="stat-num">10+</div><div class="stat-lbl">ML Models</div></div>
-      <div class="hero-stat"><div class="stat-num">20+</div><div class="stat-lbl">Experiments</div></div>
+      <div class="hero-stat"><div class="stat-num">10</div><div class="stat-lbl">ML Models</div></div>
+      <div class="hero-stat"><div class="stat-num">10+</div><div class="stat-lbl">Experiments</div></div>
     </div>
     <div class="scroll-hint">Scroll to explore</div>
   </div>
@@ -260,7 +260,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
     <div>
       <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--c1);font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px;"><span style="width:20px;height:2px;background:var(--c1);border-radius:2px;display:inline-block;"></span>About Me</div>
       <h2 style="font-size:clamp(20px,3vw,28px);font-weight:800;line-height:1.3;letter-spacing:-0.8px;margin-bottom:16px;">Fresh B.Sc. Graduate in Data Science</h2>
-      <p style="font-size:14px;color:var(--muted2);line-height:1.9;max-width:620px;margin-bottom:24px;">I'm a Data Science graduate from the University of Jeddah with hands-on experience building ML systems — from raw data cleaning through modeling and evaluation. My projects cover classical ML, deep learning (YOLOv8/v11), and generative AI for synthetic data (TabDDPM). I care about results that are measurable and code that is readable.</p>
+      <p style="font-size:14px;color:var(--muted2);line-height:1.9;max-width:620px;margin-bottom:24px;">I'm a Data Science graduate from the University of Jeddah with hands-on experience building ML systems — from raw data cleaning through modeling and evaluation. My projects cover classical ML, deep learning (YOLOv8/v11), and generative AI for synthetic data (TabDDPM).</p>
       <div style="display:flex;flex-wrap:wrap;gap:10px;">
         <div style="display:flex;align-items:center;gap:8px;background:rgba(0,198,255,0.06);border:1px solid rgba(0,198,255,0.15);border-radius:8px;padding:8px 14px;font-size:12px;font-weight:600;color:var(--c1);">
           <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Machine Learning
@@ -298,7 +298,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
     <div class="section-num">01</div>
     <div class="section-eyebrow">Graduation Project · Machine Learning</div>
     <h2 class="section-title">Customer Churn Prediction</h2>
-    <p class="section-desc">Built a predictive system to identify telecom customers at risk of churn — following CRISP-DM phases through model evaluation, with real-time deployment pipeline as future work.</p>
+    <p class="section-desc">Built a predictive system to identify telecom customers at risk of churn — following CRISP-DM phases from data understanding through model evaluation and SHAP-based explainability.</p>
     <div class="tech-row">
       <span class="tech">Python</span><span class="tech">LightGBM</span><span class="tech">TabDDPM</span><span class="tech">SMOTETomek</span><span class="tech">H2O AutoML</span><span class="tech">PyCaret</span><span class="tech">SHAP</span><span class="tech">Optuna</span><span class="tech">Scikit-learn</span><span class="tech">Pandas</span>
     </div>
@@ -313,17 +313,17 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
     </div>
     <div class="intro-block">
       <div class="intro-block-title" style="color:var(--c1);">⚙️ Our Approach</div>
-      <div class="intro-block-body">We applied <strong>CRISP-DM</strong> methodology across 20+ experiments — testing 9 ML models, 6 balancing strategies, and 4 encoding schemes. The core innovation: <strong>TabDDPM</strong> generates realistic synthetic minority samples by learning the true data distribution, while <strong>SMOTETomek</strong> then removes noisy boundary samples — creating a cleaner decision surface. Synthetic data quality was validated with KS-Test and t-SNE before training.</div>
+      <div class="intro-block-body">We applied <strong>CRISP-DM</strong> methodology — benchmarking 9 ML algorithms across 6 balancing strategies and 4 encoding schemes over 10+ documented runs. Multiple imbalance techniques (SMOTE, SMOTEENN, class weights) were evaluated. The final pipeline: <strong>TabDDPM</strong> was trained on the training set only to generate synthetic minority samples, then <strong>SMOTETomek</strong> refined the boundary by removing noisy overlaps.</div>
     </div>
     <div class="intro-block">
       <div class="intro-block-title" style="color:var(--c1);">✅ Key Result</div>
-      <div class="intro-block-body">Final pipeline: <strong>LightGBM + TabDDPM + SMOTETomek + Threshold Tuning</strong> — F1=0.67, Recall=0.78, Precision=0.58. TabDDPM synthetic augmentation raised F1 by ~7% over the strongest SMOTE-only configuration. In a retention context, missing a churner costs 5× more than a false positive — making Recall the primary business metric.</div>
+      <div class="intro-block-body">Final pipeline: <strong>LightGBM + TabDDPM + SMOTETomek + Threshold Tuning</strong> — F1=0.67, Recall=0.78, Precision=0.58. The same pipeline evaluated with synthetic data (TabDDPM) outperformed the version without it by ~7% in F1 (0.63 → 0.67). SMOTETomek then refined the decision boundary. Recall was prioritized: missing a churner costs 5× more than a false positive.</div>
     </div>
   </div>
   <!-- Key features -->
   <div class="key-features">
     <div class="kf"><div class="kf-dot" style="background:var(--c1)"></div>CRISP-DM Methodology</div>
-    <div class="kf"><div class="kf-dot" style="background:var(--c1)"></div>9 ML Models Compared</div>
+    <div class="kf"><div class="kf-dot" style="background:var(--c1)"></div>10 ML Models Compared</div>
     <div class="kf"><div class="kf-dot" style="background:var(--c1)"></div>TabDDPM Synthetic Data Generation</div>
     <div class="kf"><div class="kf-dot" style="background:var(--c1)"></div>SHAP Explainability</div>
     <div class="kf"><div class="kf-dot" style="background:var(--c1)"></div>Optuna Hyperparameter Optimization</div>
@@ -355,44 +355,31 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
         </div>
       </div>
       <div class="dash-row dash-2col">
-        <!-- Model Comparison Table -->
+        <!-- Pipeline Breakdown -->
         <div class="dash-card">
-          <div class="dc-title" style="display:flex;align-items:center;justify-content:space-between;">
-            Model Comparison — Key Results
-            <span style="font-size:10px;color:#3a4560;font-weight:500;background:rgba(0,198,255,0.07);border:1px solid rgba(0,198,255,0.15);padding:2px 8px;border-radius:4px;">20+ experiments</span>
+          <div class="dc-title" style="margin-bottom:14px;">Winning Pipeline — How It Was Built</div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;align-items:center;gap:10px;padding:9px 12px;background:rgba(0,198,255,0.04);border:1px solid rgba(0,198,255,0.1);border-radius:8px;">
+              <div style="width:22px;height:22px;border-radius:50%;background:rgba(0,198,255,0.15);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:var(--c1);flex-shrink:0;">1</div>
+              <div style="font-size:12px;color:var(--muted2);">Label Encoding on all categorical features — no dimensionality explosion</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:9px 12px;background:rgba(0,198,255,0.04);border:1px solid rgba(0,198,255,0.1);border-radius:8px;">
+              <div style="width:22px;height:22px;border-radius:50%;background:rgba(0,198,255,0.15);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:var(--c1);flex-shrink:0;">2</div>
+              <div style="font-size:12px;color:var(--muted2);"><strong style="color:var(--text);">TabDDPM</strong> generates synthetic minority samples at 4.8:1 ratio — trained on training set only</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:9px 12px;background:rgba(0,198,255,0.04);border:1px solid rgba(0,198,255,0.1);border-radius:8px;">
+              <div style="width:22px;height:22px;border-radius:50%;background:rgba(0,198,255,0.15);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:var(--c1);flex-shrink:0;">3</div>
+              <div style="font-size:12px;color:var(--muted2);"><strong style="color:var(--text);">SMOTETomek</strong> removes noisy boundary samples → cleaner decision surface</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:9px 12px;background:rgba(0,198,255,0.04);border:1px solid rgba(0,198,255,0.1);border-radius:8px;">
+              <div style="width:22px;height:22px;border-radius:50%;background:rgba(0,198,255,0.15);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:var(--c1);flex-shrink:0;">4</div>
+              <div style="font-size:12px;color:var(--muted2);"><strong style="color:var(--text);">LightGBM</strong> default params — faster convergence, native handling of imbalance vs XGBoost</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:9px 12px;background:rgba(0,198,255,0.04);border:1px solid rgba(0,198,255,0.1);border-radius:8px;">
+              <div style="width:22px;height:22px;border-radius:50%;background:rgba(0,198,255,0.15);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:var(--c1);flex-shrink:0;">5</div>
+              <div style="font-size:12px;color:var(--muted2);">Threshold tuning on validation set → F1 <strong style="color:#00c6ff;">0.67</strong> · Recall <strong style="color:#22c55e;">0.78</strong></div>
+            </div>
           </div>
-          <table style="width:100%;border-collapse:collapse;margin-top:10px;font-size:12px;">
-            <tr>
-              <th style="text-align:left;padding:7px 8px;font-size:10px;color:#3a4560;border-bottom:1px solid #1e2535;font-weight:600;letter-spacing:1px;text-transform:uppercase;">Model</th>
-              <th style="text-align:center;padding:7px 8px;font-size:10px;color:#3a4560;border-bottom:1px solid #1e2535;font-weight:600;">F1</th>
-              <th style="text-align:center;padding:7px 8px;font-size:10px;color:#3a4560;border-bottom:1px solid #1e2535;font-weight:600;">Recall</th>
-              <th style="text-align:center;padding:7px 8px;font-size:10px;color:#3a4560;border-bottom:1px solid #1e2535;font-weight:600;">Precision</th>
-            </tr>
-            <tr style="background:rgba(0,198,255,0.06);border-radius:6px;">
-              <td style="padding:8px;color:#00c6ff;font-weight:700;border-bottom:1px solid #1a2030;">LightGBM + TabDDPM + SMOTETomek ★</td>
-              <td style="padding:8px;text-align:center;color:#00c6ff;font-weight:700;border-bottom:1px solid #1a2030;">0.67</td>
-              <td style="padding:8px;text-align:center;color:#22c55e;font-weight:700;border-bottom:1px solid #1a2030;">0.78</td>
-              <td style="padding:8px;text-align:center;color:#8a9ab8;border-bottom:1px solid #1a2030;">0.58</td>
-            </tr>
-            <tr>
-              <td style="padding:8px;color:#8a9ab8;border-bottom:1px solid #1a2030;">LightGBM + SMOTETomek <span style="font-size:9px;color:#3a4560;">(no synthetic)</span></td>
-              <td style="padding:8px;text-align:center;color:#8a9ab8;border-bottom:1px solid #1a2030;">0.63</td>
-              <td style="padding:8px;text-align:center;color:#8a9ab8;border-bottom:1px solid #1a2030;">0.79</td>
-              <td style="padding:8px;text-align:center;color:#8a9ab8;border-bottom:1px solid #1a2030;">0.52</td>
-            </tr>
-            <tr>
-              <td style="padding:8px;color:#8a9ab8;border-bottom:1px solid #1a2030;">ExtraTrees + SMOTEENN</td>
-              <td style="padding:8px;text-align:center;color:#8a9ab8;border-bottom:1px solid #1a2030;">0.64</td>
-              <td style="padding:8px;text-align:center;color:#8a9ab8;border-bottom:1px solid #1a2030;">0.74</td>
-              <td style="padding:8px;text-align:center;color:#8a9ab8;border-bottom:1px solid #1a2030;">0.57</td>
-            </tr>
-            <tr>
-              <td style="padding:8px;color:#6a7a98;">Logistic Regression (baseline)</td>
-              <td style="padding:8px;text-align:center;color:#6a7a98;">0.63</td>
-              <td style="padding:8px;text-align:center;color:#6a7a98;">0.66</td>
-              <td style="padding:8px;text-align:center;color:#6a7a98;">0.60</td>
-            </tr>
-          </table>
         </div>
         <!-- Metrics grouped bar -->
         <div class="dash-card">
@@ -423,14 +410,23 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
         <div class="dash-card">
           <div class="dc-title" style="margin-bottom:14px;">Experiment Coverage</div>
           <div class="exp-summary">
-            <div class="exp-box"><div class="exp-box-num">20+</div><div class="exp-box-lbl">Total Runs</div></div>
-            <div class="exp-box"><div class="exp-box-num">9</div><div class="exp-box-lbl">ML Models</div></div>
+            <div class="exp-box"><div class="exp-box-num">50+</div><div class="exp-box-lbl">Documented Runs</div></div>
+            <div class="exp-box"><div class="exp-box-num">10</div><div class="exp-box-lbl">ML Models</div></div>
             <div class="exp-box"><div class="exp-box-num">6</div><div class="exp-box-lbl">Balancing Methods</div></div>
             <div class="exp-box"><div class="exp-box-num">4</div><div class="exp-box-lbl">Encoding Schemes</div></div>
           </div>
-          <div style="margin-top:14px;padding:10px 12px;background:rgba(0,198,255,0.04);border:1px solid rgba(0,198,255,0.1);border-radius:8px;font-size:12px;color:#4a5570;line-height:1.6;">
+          <!-- Model Comparison F1 progression -->
+          <div style="margin-top:14px;display:flex;flex-direction:column;gap:7px;">
+            <div style="font-size:10px;color:#3a4560;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">Model Comparison — Key Results</div>
+            <div class="prog-row"><span class="prog-lbl" style="font-size:11px;color:#4a5570;">GBM · SMOTEENN · Optuna</span><div class="prog-bg"><div class="prog-fill" style="width:74%;background:linear-gradient(90deg,#1e2535,#2a3a50);"></div></div><span class="prog-val" style="color:#3a5070;">0.599</span></div>
+            <div class="prog-row"><span class="prog-lbl" style="font-size:11px;color:#4a5570;">H2O AutoML · Class Balancing</span><div class="prog-bg"><div class="prog-fill" style="width:79%;background:linear-gradient(90deg,#1e2a40,#2a4060);"></div></div><span class="prog-val" style="color:#3a5580;">0.613</span></div>
+            <div class="prog-row"><span class="prog-lbl" style="font-size:11px;color:#4a5570;">LightGBM · BorderlineSMOTE · GridSearch</span><div class="prog-bg"><div class="prog-fill" style="width:83%;background:linear-gradient(90deg,#1e3040,#2a4a68);"></div></div><span class="prog-val" style="color:#3a6090;">0.623</span></div>
+            <div class="prog-row"><span class="prog-lbl" style="font-size:11px;color:#4a5570;">LR · AutoFeat · SMOTETomek</span><div class="prog-bg"><div class="prog-fill" style="width:88%;background:linear-gradient(90deg,#1e3545,#2a5070);"></div></div><span class="prog-val" style="color:#4a6090;">0.648</span></div>
+            <div class="prog-row"><span class="prog-lbl" style="font-size:11px;color:#00c6ff;font-weight:600;">LightGBM · TabDDPM · SMOTETomek ★</span><div class="prog-bg"><div class="prog-fill" style="width:100%;background:linear-gradient(90deg,#0088bb,#00c6ff);"></div></div><span class="prog-val" style="color:#00c6ff;font-weight:700;">0.671</span></div>
+          </div>
+          <div style="margin-top:12px;padding:10px 12px;background:rgba(0,198,255,0.04);border:1px solid rgba(0,198,255,0.1);border-radius:8px;font-size:12px;color:#4a5570;line-height:1.6;">
             <strong style="color:var(--c1);">Winner:</strong> LightGBM + TabDDPM + SMOTETomek<br>
-            +7% relative F1 improvement from TabDDPM synthetic data vs. the strongest SMOTE-only baseline (F1=0.63 → 0.67).
+            Final pipeline with TabDDPM raised F1 by ~7% vs. the same pipeline without synthetic data (0.63 → 0.67).
           </div>
         </div>
         <!-- Class distribution donut -->
@@ -454,15 +450,76 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
     </div>
   </div>
 
+      <!-- Confusion Matrix Row -->
+      <div class="dash-row">
+        <div class="dash-card">
+          <div class="dc-title">Confusion Matrix — Best Model (LightGBM + TabDDPM + SMOTETomek)</div>
+          <div style="display:flex;align-items:flex-start;gap:24px;flex-wrap:wrap;">
+            <!-- Matrix visual -->
+            <div style="flex-shrink:0;">
+              <div style="display:grid;grid-template-columns:auto auto auto;gap:0;font-size:11px;">
+                <!-- Header row -->
+                <div style="padding:6px 8px;"></div>
+                <div style="padding:6px 16px;text-align:center;font-size:10px;color:#3a4560;font-weight:700;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid #1e2535;">Predicted<br>No Churn</div>
+                <div style="padding:6px 16px;text-align:center;font-size:10px;color:#3a4560;font-weight:700;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid #1e2535;">Predicted<br>Churn</div>
+                <!-- Row 1: Actual No -->
+                <div style="padding:10px 8px;font-size:10px;color:#3a4560;font-weight:700;letter-spacing:1px;text-transform:uppercase;border-right:1px solid #1e2535;writing-mode:vertical-rl;text-orientation:mixed;display:flex;align-items:center;">Actual No Churn</div>
+                <div style="padding:14px 20px;text-align:center;background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.25);border-radius:8px;margin:4px;">
+                  <div style="font-size:22px;font-weight:800;color:#22c55e;line-height:1;">825</div>
+                  <div style="font-size:9px;color:#22c55e;margin-top:4px;font-weight:600;">TN</div>
+                </div>
+                <div style="padding:14px 20px;text-align:center;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:8px;margin:4px;">
+                  <div style="font-size:22px;font-weight:800;color:#ef4444;opacity:0.7;line-height:1;">211</div>
+                  <div style="font-size:9px;color:#ef4444;opacity:0.7;margin-top:4px;font-weight:600;">FP</div>
+                </div>
+                <!-- Row 2: Actual Yes -->
+                <div style="padding:10px 8px;font-size:10px;color:#3a4560;font-weight:700;letter-spacing:1px;text-transform:uppercase;border-right:1px solid #1e2535;writing-mode:vertical-rl;text-orientation:mixed;display:flex;align-items:center;">Actual Churn</div>
+                <div style="padding:14px 20px;text-align:center;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:8px;margin:4px;">
+                  <div style="font-size:22px;font-weight:800;color:#ef4444;opacity:0.7;line-height:1;">82</div>
+                  <div style="font-size:9px;color:#ef4444;opacity:0.7;margin-top:4px;font-weight:600;">FN</div>
+                </div>
+                <div style="padding:14px 20px;text-align:center;background:rgba(0,198,255,0.12);border:1px solid rgba(0,198,255,0.3);border-radius:8px;margin:4px;">
+                  <div style="font-size:22px;font-weight:800;color:#00c6ff;line-height:1;">291</div>
+                  <div style="font-size:9px;color:#00c6ff;margin-top:4px;font-weight:600;">TP</div>
+                </div>
+              </div>
+            </div>
+            <!-- Interpretation -->
+            <div style="flex:1;min-width:200px;display:flex;flex-direction:column;gap:12px;padding-top:4px;">
+              <div>
+                <div style="font-size:10px;color:#3a4560;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">What the numbers mean</div>
+                <div style="font-size:12px;color:var(--muted2);line-height:1.7;">
+                  Of <strong style="color:var(--fg);">373 actual churners</strong> in the test set, the model correctly identified <strong style="color:#00c6ff;">291 (Recall 0.78)</strong>. Only 82 were missed.<br><br>
+                  Of all predicted churners, <strong style="color:#00c6ff;">291 of 502 were correct</strong> — Precision 0.58. The 211 false positives (customers flagged but loyal) are an acceptable cost: a retention offer to a loyal customer costs far less than losing a genuine churner.
+                </div>
+              </div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                <div style="background:rgba(0,198,255,0.07);border:1px solid rgba(0,198,255,0.15);border-radius:6px;padding:8px 12px;text-align:center;">
+                  <div style="font-size:16px;font-weight:800;color:#00c6ff;">78%</div>
+                  <div style="font-size:9px;color:#3a4560;text-transform:uppercase;letter-spacing:0.5px;margin-top:2px;">Recall</div>
+                </div>
+                <div style="background:rgba(245,158,11,0.07);border:1px solid rgba(245,158,11,0.2);border-radius:6px;padding:8px 12px;text-align:center;">
+                  <div style="font-size:16px;font-weight:800;color:#f59e0b;">58%</div>
+                  <div style="font-size:9px;color:#3a4560;text-transform:uppercase;letter-spacing:0.5px;margin-top:2px;">Precision</div>
+                </div>
+                <div style="background:rgba(124,58,237,0.07);border:1px solid rgba(124,58,237,0.2);border-radius:6px;padding:8px 12px;text-align:center;">
+                  <div style="font-size:16px;font-weight:800;color:#a78bfa;">0.67</div>
+                  <div style="font-size:9px;color:#3a4560;text-transform:uppercase;letter-spacing:0.5px;margin-top:2px;">F1</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
   <!-- Supporting info -->
   <div class="two-col">
     <div class="card acc1">
       <div class="card-label c1">CRISP-DM Pipeline</div>
       <div style="display:flex;flex-direction:column;gap:9px;">
         <div style="display:flex;gap:10px;align-items:flex-start;"><div style="width:22px;height:22px;border-radius:5px;background:rgba(0,198,255,0.1);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--c1);flex-shrink:0;">1</div><div style="font-size:13px;color:var(--muted2);line-height:1.6;">Business understanding: minimize churn cost (5× acquisition vs retention)</div></div>
-        <div style="display:flex;gap:10px;align-items:flex-start;"><div style="width:22px;height:22px;border-radius:5px;background:rgba(0,198,255,0.1);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--c1);flex-shrink:0;">2</div><div style="font-size:13px;color:var(--muted2);line-height:1.6;">EDA: 26.5% churn rate, 21 features, TotalCharges null fix</div></div>
-        <div style="display:flex;gap:10px;align-items:flex-start;"><div style="width:22px;height:22px;border-radius:5px;background:rgba(0,198,255,0.1);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--c1);flex-shrink:0;">3</div><div style="font-size:13px;color:var(--muted2);line-height:1.6;">Encoding: Label, One-Hot, Ordinal, Target — Scaling: StandardScaler, RobustScaler</div></div>
-        <div style="display:flex;gap:10px;align-items:flex-start;"><div style="width:22px;height:22px;border-radius:5px;background:rgba(0,198,255,0.1);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--c1);flex-shrink:0;">4</div><div style="font-size:13px;color:var(--muted2);line-height:1.6;">TabDDPM synthetic data (4.8:1 ratio, KS-Test + t-SNE validated) → SMOTETomek boundary cleaning</div></div>
+        <div style="display:flex;gap:10px;align-items:flex-start;"><div style="width:22px;height:22px;border-radius:5px;background:rgba(0,198,255,0.1);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--c1);flex-shrink:0;">2</div><div style="font-size:13px;color:var(--muted2);line-height:1.6;">EDA: 26.5% churn rate imbalance identified, 21 features explored, missing values handled</div></div>
+        <div style="display:flex;gap:10px;align-items:flex-start;"><div style="width:22px;height:22px;border-radius:5px;background:rgba(0,198,255,0.1);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--c1);flex-shrink:0;">3</div><div style="font-size:13px;color:var(--muted2);line-height:1.6;">Preprocessing: multiple encoding and scaling strategies tested across experiments — final model used Label Encoding + LightGBM defaults, fitted on training data only to prevent leakage</div></div>
+        <div style="display:flex;gap:10px;align-items:flex-start;"><div style="width:22px;height:22px;border-radius:5px;background:rgba(0,198,255,0.1);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--c1);flex-shrink:0;">4</div><div style="font-size:13px;color:var(--muted2);line-height:1.6;">TabDDPM generates synthetic minority samples (4.8:1 ratio) from training data only → SMOTETomek removes noisy boundary samples → cleaner decision surface</div></div>
         <div style="display:flex;gap:10px;align-items:flex-start;"><div style="width:22px;height:22px;border-radius:5px;background:rgba(0,198,255,0.1);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--c1);flex-shrink:0;">5</div><div style="font-size:13px;color:var(--muted2);line-height:1.6;">Optuna HPO + threshold tuning → best F1 0.67, Recall 0.78</div></div>
       </div>
     </div>
@@ -470,7 +527,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
       <div class="card-label c1">Full Technology Stack</div>
       <table class="tbl" style="font-size:12px;">
         <tr><th>Category</th><th>Tools</th></tr>
-        <tr><td style="color:#6a7a98">Core Models</td><td>LightGBM, CatBoost, XGBoost, MLP, TabNet</td></tr>
+        <tr><td style="color:#6a7a98">Core Models</td><td>LightGBM (selected: faster training, stronger on imbalanced tabular data vs. XGBoost), CatBoost, XGBoost, MLP, TabNet</td></tr>
         <tr><td style="color:#6a7a98">AutoML</td><td>H2O AutoML, PyCaret</td></tr>
         <tr><td style="color:#6a7a98">Imbalance</td><td>SMOTETomek, SMOTEENN, ADASYN, BorderlineSMOTE</td></tr>
         <tr><td style="color:#6a7a98">Synthetic</td><td>TabDDPM (Deep Generative Model)</td></tr>
@@ -497,7 +554,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
       </div>
       <div class="insight-item">
         <div class="insight-icon">🧬</div>
-        <div class="insight-text"><strong>Synthetic data as a business lever:</strong> TabDDPM raised F1-score by ~7% over the strongest SMOTE-only run. Unlike SMOTE, which interpolates between existing samples, TabDDPM learns the full data distribution and generates genuinely new samples. Quality was confirmed via KS-Test (statistical parity) and t-SNE (visual cluster alignment) before any model training.</div>
+        <div class="insight-text"><strong>Validating synthetic data quality:</strong> Distribution alignment was confirmed via KS-Test (statistical) and t-SNE (visual). The definitive evidence, however, came from model performance: TabDDPM raised F1 by ~7% on a completely unseen test set — demonstrating that the synthetic data improved generalization, not just training coverage.</div>
       </div>
       <div class="insight-item">
         <div class="insight-icon">🔍</div>
@@ -529,21 +586,20 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   <div class="proj-intro">
     <div class="intro-block">
       <div class="intro-block-title" style="color:var(--c2);">🎯 The Problem</div>
-      <div class="intro-block-body">Heart disease is a leading cause of death globally. Early and accurate diagnosis from clinical data can dramatically improve patient outcomes — but raw data from multiple sources is noisy and inconsistent.</div>
+      <div class="intro-block-body">Heart disease is a leading cause of death globally. Clinical datasets from different sources vary in format, scale, and completeness — making multi-source data integration a core challenge before any modeling can begin.</div>
     </div>
     <div class="intro-block">
       <div class="intro-block-title" style="color:var(--c2);">⚙️ Our Approach</div>
-      <div class="intro-block-body">We merged <strong>5 public datasets</strong> (2,182 raw records) into one clean <strong>1,889-record dataset</strong> with 14 clinical features, then ran three analysis tasks in <strong>RapidMiner</strong>: exploratory analysis, decision tree classification (12 configs), and K-Means patient segmentation.</div>
+      <div class="intro-block-body">We merged <strong>5 public datasets</strong> (2,182 raw records) into one clean <strong>1,889-record dataset</strong> with 14 clinical features. <strong>RapidMiner</strong> was used for its visual, reproducible pipeline design. Three analysis tasks: (1) EDA for feature understanding, (2) Decision Tree classification across 12 configurations, (3) K-Means for exploratory patient segmentation — to discover hidden patient subgroups, not for prediction.</div>
     </div>
     <div class="intro-block">
       <div class="intro-block-title" style="color:var(--c2);">✅ Key Result</div>
-      <div class="intro-block-body">Best decision tree: <strong>Information Gain + 3.5% min leaf</strong> — achieved <strong>85% accuracy</strong> and an overall score of 0.87. K-Means (K=3, selected via Elbow Method) revealed clinically meaningful patient clusters segmented by age, thal, and chest pain type.</div>
+      <div class="intro-block-body">Best decision tree: <strong>Information Gain + 3.5% min leaf</strong> — 85% accuracy, overall score 0.87, Lift=1.20. In this exploratory study, accuracy was the primary metric since the goal was model comparison across configurations, not deployment. K-Means (K=3 via Elbow Method) revealed three clinically distinct patient groups — a complementary unsupervised view of the same data.</div>
     </div>
   </div>
   <!-- Key features -->
   <div class="key-features">
-    <div class="kf"><div class="kf-dot" style="background:var(--c2)"></div>5 Datasets Merged &amp; Cleaned</div>
-    <div class="kf"><div class="kf-dot" style="background:var(--c2)"></div>12 Decision Tree Configurations</div>
+        <div class="kf"><div class="kf-dot" style="background:var(--c2)"></div>12 Decision Tree Configurations</div>
     <div class="kf"><div class="kf-dot" style="background:var(--c2)"></div>K-Means Patient Segmentation (K=2–5)</div>
     <div class="kf"><div class="kf-dot" style="background:var(--c2)"></div>RapidMiner Visual Pipelines</div>
     <div class="kf"><div class="kf-dot" style="background:var(--c2)"></div>Clinical Feature Interpretation</div>
@@ -714,7 +770,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   <div class="proj-intro">
     <div class="intro-block">
       <div class="intro-block-title" style="color:var(--c4);">🎯 The Problem</div>
-      <div class="intro-block-body">VisDrone2019 is one of the most challenging object detection benchmarks: objects are often under 10px, scenes are densely crowded, and images span varying altitudes. Standard detectors trained on ground-level data perform poorly on aerial imagery.</div>
+      <div class="intro-block-body">VisDrone2019 is one of the most challenging object detection benchmarks: objects are often under 10px in width, scenes contain hundreds of overlapping instances, and images span varying altitudes. Class imbalance is also severe — cars dominate while bicycles and awning-tricycles are rare, directly affecting per-class detection performance.</div>
     </div>
     <div class="intro-block">
       <div class="intro-block-title" style="color:var(--c4);">⚙️ Our Approach</div>
@@ -722,7 +778,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
     </div>
     <div class="intro-block">
       <div class="intro-block-title" style="color:var(--c4);">✅ Key Result</div>
-      <div class="intro-block-body"><strong>YOLO11l achieved mAP@50 = 0.346</strong> · mAP@50-95 = 0.210 · Inference: 1.9ms/image. Cars detected at 77.5% mAP. Custom augmentation delivered a +6% mAP gain before any model change — confirming data quality as the primary bottleneck on this benchmark.</div>
+      <div class="intro-block-body"><strong>YOLO11l achieved mAP@50 = 0.346</strong> · mAP@50-95 = 0.210 · Inference: 1.9ms/image. Augmentation alone (train6→train4): mAP improved from 0.236 to 0.250 (+6%) with the same YOLOv8n — data volume was the primary bottleneck. Model scaling then pushed to 0.346. The moderate overall mAP reflects the inherent difficulty of small-object aerial detection, not a model limitation.</div>
     </div>
   </div>
   <!-- Key features -->
@@ -894,7 +950,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
     </a>
   </div>
   <div style="font-size:12px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Data Science · Machine Learning · Deep Learning</div>
-  <div style="font-size:11px;color:var(--muted);opacity:0.5;">© 2025 Abdullah Hani Alharthi · University of Jeddah</div>
+  <div style="font-size:11px;color:var(--muted);opacity:0.5;">© 2026 Abdullah Hani Alharthi · University of Jeddah</div>
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false">
@@ -939,7 +995,7 @@ if __name__ == '__main__':
     model = YOLO('yolov8m.pt')
 
     model.train(
-        data=r"C:\\Users\\mm\\Desktop\\VisDrone2019\\visdrone.yaml",
+        data=r"C:\\Users\\abdullah\\Desktop\\VisDrone2019\\visdrone.yaml",
         epochs=10,
         imgsz=640,
         batch=16,
@@ -960,7 +1016,7 @@ if __name__ == '__main__':
     model = YOLO('yolov8n.pt')
 
     model.train(
-        data=r"C:\\Users\\mm\\Desktop\\VisDrone2019\\visdrone.yaml",
+        data=r"C:\\Users\\abdullah\\Desktop\\VisDrone2019\\visdrone.yaml",
         epochs=20,
         imgsz=640,
         batch=8,
@@ -983,7 +1039,7 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 model = YOLO('yolo11l.pt')
 
 model.train(
-    data=r"C:\\Users\\mm\\Desktop\\VisDrone2019\\visdrone.yaml",
+    data=r"C:\\Users\\abdullah\\Desktop\\VisDrone2019\\visdrone.yaml",
     epochs=10,
     imgsz=640,
     batch=8,
@@ -997,7 +1053,7 @@ from PIL import Image
 import os
 from torchvision import transforms
 
-train_images_path = r"C:\\Users\\mm\\Desktop\\VisDrone2019\\VisDrone2019-DET-train\\images"
+train_images_path = r"C:\\Users\\abdullah\\Desktop\\VisDrone2019\\VisDrone2019-DET-train\\images"
 
 transform = transforms.Compose([
     transforms.ColorJitter(brightness=0.2, contrast=0.2),
