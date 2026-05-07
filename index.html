@@ -65,6 +65,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .s1 .section-eyebrow{color:var(--c1);} .s1 .section-eyebrow::before{background:var(--c1);}
 .s2 .section-eyebrow{color:var(--c2);} .s2 .section-eyebrow::before{background:var(--c2);}
 .s4 .section-eyebrow{color:var(--c4);} .s4 .section-eyebrow::before{background:var(--c4);}
+.s5 .section-eyebrow{color:#3b82f6;} .s5 .section-eyebrow::before{background:#3b82f6;}
 
 /* LAYOUT */
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px;}
@@ -227,7 +228,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   <div class="hero-content">
     <div class="hero-name">Abdullah Hani Alharthi</div>
     <h1 class="hero-title"><span>Data Science</span><br>Portfolio</h1>
-    <p class="hero-sub">B.Sc. Data Science — University of Jeddah. Three academic projects across machine learning, data mining, and deep learning</p>
+    <p class="hero-sub">B.Sc. Data Science — University of Jeddah. Four projects across machine learning, data mining, deep learning, and real estate analytics</p>
     <div class="hero-info">
       <div class="hero-info-item"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.25 9.13a19.79 19.79 0 01-3-8.59A2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.2a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg>+966 533 827 024</div>
       <div class="hero-info-item"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg><span>alharthi<span>.</span>aha<span>@</span>gmail<span>.</span>com</span></div>
@@ -240,9 +241,9 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
       </div>
     </div>
     <div class="hero-stats">
-      <div class="hero-stat"><div class="stat-num">3</div><div class="stat-lbl">Projects</div></div>
-      <div class="hero-stat"><div class="stat-num">3</div><div class="stat-lbl">Domains</div></div>
-      <div class="hero-stat"><div class="stat-num">10</div><div class="stat-lbl">ML Models</div></div>
+      <div class="hero-stat"><div class="stat-num">4</div><div class="stat-lbl">Projects</div></div>
+      <div class="hero-stat"><div class="stat-num">4</div><div class="stat-lbl">Domains</div></div>
+      <div class="hero-stat"><div class="stat-num">11</div><div class="stat-lbl">ML Models</div></div>
       <div class="hero-stat"><div class="stat-num">10+</div><div class="stat-lbl">Experiments</div></div>
     </div>
     <div class="scroll-hint">Scroll to explore</div>
@@ -252,10 +253,11 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 <!-- NAV -->
 <nav class="nav">
   <div class="nav-logo"><span>AH</span> · Portfolio</div>
-  <button class="nav-item" onclick="goTo(&#39;#about&#39;)"><span class="nav-dot" style="background:#22c55e"></span>About</button>
-  <button class="nav-item active" onclick="goTo(&#39;#s1&#39;)"><span class="nav-dot" style="background:var(--c1)"></span>Churn Prediction</button>
-  <button class="nav-item" onclick="goTo(&#39;#s2&#39;)"><span class="nav-dot" style="background:var(--c2)"></span>Heart Disease</button>
-  <button class="nav-item" onclick="goTo(&#39;#s4&#39;)"><span class="nav-dot" style="background:var(--c4)"></span>Object Detection</button>
+  <button class="nav-item" onclick="goTo('#about')"><span class="nav-dot" style="background:#22c55e"></span>About</button>
+  <button class="nav-item active" onclick="goTo('#s1')"><span class="nav-dot" style="background:var(--c1)"></span>Churn Prediction</button>
+  <button class="nav-item" onclick="goTo('#s2')"><span class="nav-dot" style="background:var(--c2)"></span>Heart Disease</button>
+  <button class="nav-item" onclick="goTo('#s4')"><span class="nav-dot" style="background:var(--c4)"></span>Object Detection</button>
+  <button class="nav-item" onclick="goTo('#s5')"><span class="nav-dot" style="background:#3b82f6"></span>Jeddah Rent</button>
 </nav>
 
 <!-- ═══ ABOUT / RECRUITER SUMMARY ═══ -->
@@ -1095,6 +1097,173 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 
 </section>
 
+<div class="full-divider"></div>
+
+<!-- ═══════════════════════════════════════════
+     PROJECT 5 — JEDDAH RENT ANALYTICS
+═══════════════════════════════════════════ -->
+<section class="section s5" id="s5">
+  <div class="section-header">
+    <div class="section-num">04</div>
+    <div class="section-eyebrow">Machine Learning · NLP · Market Analytics</div>
+    <h2 class="section-title">Jeddah Apartment Rent Analytics</h2>
+    <p class="section-desc">Built a CatBoost regression model on 11,818 real Jeddah listings with multilingual Arabic/English NLP embeddings — R² = 0.758, MAPE = 13.8%. Includes an interactive market dashboard with Voronoi district map and a live rent predictor.</p>
+    <div class="tech-row">
+      <span class="tech">CatBoost</span><span class="tech">Sentence Transformers</span><span class="tech">Optuna</span><span class="tech">PCA</span><span class="tech">SHAP</span><span class="tech">Python</span><span class="tech">Pandas</span><span class="tech">Leaflet.js</span><span class="tech">Chart.js</span><span class="tech">Scikit-learn</span>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;">
+      <a href="https://github.com/AbdullahAlharthy/jeddah-rent-analytics" target="_blank" rel="noopener" class="gh-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"></path></svg>
+        View on GitHub
+      </a>
+      <a href="jeddah-dashboard.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:8px;border:1px solid rgba(59,130,246,0.35);background:rgba(59,130,246,0.08);color:#60a5fa;font-size:13px;font-weight:600;text-decoration:none;font-family:'Inter',sans-serif;transition:all 0.2s;">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        Live Demo
+      </a>
+    </div>
+  </div>
+
+  <div class="proj-intro">
+    <div class="intro-block">
+      <div class="intro-block-title" style="color:#3b82f6;">&#x1F3AF; The Problem</div>
+      <div class="intro-block-body">Jeddah's rental market lacks transparent, data-driven pricing. Renters overpay or miss fair deals due to information asymmetry. The goal: build a model that estimates fair rent from apartment specifications and make the insights accessible to anyone.</div>
+    </div>
+    <div class="intro-block">
+      <div class="intro-block-title" style="color:#3b82f6;">&#x2699;&#xFE0F; The Approach</div>
+      <div class="intro-block-body">Collected and cleaned <strong>11,818 Jeddah listings</strong>. Engineered 60+ features including multilingual NLP embeddings (768-dim &rarr; PCA 128) from Arabic/English descriptions. Trained CatBoost with Optuna HPO across 40 trials. Strict no-leakage pipeline: all transforms fitted on train set only.</div>
+    </div>
+    <div class="intro-block">
+      <div class="intro-block-title" style="color:#3b82f6;">&#x2705; The Result</div>
+      <div class="intro-block-body">Final model: <strong>R&sup2; = 0.758, MAPE = 13.8%, MAE &asymp; SAR 468/month</strong>. CV R&sup2; = 0.722 &plusmn; 0.006 across 5 folds. Delivered as an interactive dashboard with a Voronoi district price map and a live rent predictor.</div>
+    </div>
+  </div>
+
+  <div class="key-features">
+    <div class="kf"><div class="kf-dot" style="background:#3b82f6"></div>CatBoost Regression</div>
+    <div class="kf"><div class="kf-dot" style="background:#3b82f6"></div>Multilingual NLP Embeddings (AR/EN)</div>
+    <div class="kf"><div class="kf-dot" style="background:#3b82f6"></div>Optuna HPO &middot; 40 Trials</div>
+    <div class="kf"><div class="kf-dot" style="background:#3b82f6"></div>SHAP Feature Importance</div>
+    <div class="kf"><div class="kf-dot" style="background:#3b82f6"></div>PCA Dimensionality Reduction</div>
+    <div class="kf"><div class="kf-dot" style="background:#3b82f6"></div>5-Fold Cross-Validation</div>
+    <div class="kf"><div class="kf-dot" style="background:#3b82f6"></div>No Data Leakage Pipeline</div>
+    <div class="kf"><div class="kf-dot" style="background:#3b82f6"></div>Interactive Market Dashboard</div>
+    <div class="kf"><div class="kf-dot" style="background:#3b82f6"></div>Voronoi District Map</div>
+    <div class="kf"><div class="kf-dot" style="background:#3b82f6"></div>Live Rent Predictor</div>
+  </div>
+
+  <div class="four-col" style="margin-bottom:20px;">
+    <div class="card acc1" style="border-top-color:#3b82f6;text-align:center;padding:22px 16px;">
+      <div class="metric-big" style="color:#60a5fa;">0.758</div>
+      <div class="metric-label">Test R&sup2;</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:6px;">Best model</div>
+    </div>
+    <div class="card" style="border-top:2px solid #10b981;text-align:center;padding:22px 16px;">
+      <div class="metric-big" style="color:#34d399;">13.8%</div>
+      <div class="metric-label">MAPE</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:6px;">Mean Abs. % Error</div>
+    </div>
+    <div class="card" style="border-top:2px solid #f59e0b;text-align:center;padding:22px 16px;">
+      <div class="metric-big" style="color:#fbbf24;">468</div>
+      <div class="metric-label">MAE (SAR/Month)</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:6px;">Mean Abs. Error</div>
+    </div>
+    <div class="card" style="border-top:2px solid #a78bfa;text-align:center;padding:22px 16px;">
+      <div class="metric-big" style="color:#c4b5fd;">0.722</div>
+      <div class="metric-label">CV R&sup2; (5-Fold)</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:6px;">&plusmn;0.006 std</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="card" style="border-top:2px solid #3b82f6;">
+      <div class="card-label" style="color:#60a5fa;">ML Pipeline</div>
+      <div class="terminal" style="margin-top:4px;">
+        <div class="term-bar">
+          <div class="term-dots"><div class="td2 td2r"></div><div class="td2 td2y"></div><div class="td2 td2g"></div></div>
+          <div class="term-ttl">pipeline.py</div>
+        </div>
+        <div class="term-body" style="font-size:11px;line-height:1.9;">
+<span class="tm"># Step 1 &mdash; Data</span>
+<span class="tg">df</span> <span class="tw">= clean_and_engineer(raw_listings)</span>
+<span class="tm"># Step 2 &mdash; NLP Embeddings</span>
+<span class="tg">embeddings</span> <span class="tw">= SentenceTransformer(</span><span class="ty">"paraphrase-multilingual"</span><span class="tw">)</span>
+<span class="tg">reduced</span> <span class="tw">= PCA(n_components=</span><span class="ty">128</span><span class="tw">).fit_transform(embeddings)</span>
+<span class="tm"># Step 3 &mdash; Model</span>
+<span class="tg">study</span> <span class="tw">= optuna.create_study()</span>
+<span class="tg">study</span><span class="tw">.optimize(objective, n_trials=</span><span class="ty">40</span><span class="tw">)</span>
+<span class="tg">model</span> <span class="tw">= CatBoostRegressor(**best_params)</span>
+<span class="tg">model</span><span class="tw">.fit(X_train, y_train)</span>
+<span class="tm"># Results</span>
+<span class="tw">print(</span><span class="ty">"R2:"</span><span class="tw">, r2_score(y_test, y_pred))</span>  <span class="tm"># 0.758</span>
+<span class="tw">print(</span><span class="ty">"MAPE:"</span><span class="tw">, mape)</span>                     <span class="tm"># 13.8%</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <div class="card" style="border-top:2px solid #3b82f6;">
+        <div class="card-label" style="color:#60a5fa;">Feature Importance &mdash; SHAP (Top 5)</div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:4px;">
+          <div class="prog-row"><span class="prog-lbl">District Location</span><div class="prog-bg"><div class="prog-fill" style="width:100%;background:linear-gradient(90deg,#1e40af,#3b82f6);"></div></div><span class="prog-val" style="color:#60a5fa;">15.9%</span></div>
+          <div class="prog-row"><span class="prog-lbl">NLP Embeddings</span><div class="prog-bg"><div class="prog-fill" style="width:89%;background:linear-gradient(90deg,#065f46,#10b981);"></div></div><span class="prog-val" style="color:#34d399;">14.2%</span></div>
+          <div class="prog-row"><span class="prog-lbl">Amenity Score</span><div class="prog-bg"><div class="prog-fill" style="width:74%;background:linear-gradient(90deg,#78350f,#f59e0b);"></div></div><span class="prog-val" style="color:#fbbf24;">11.8%</span></div>
+          <div class="prog-row"><span class="prog-lbl">Area (m&sup2;)</span><div class="prog-bg"><div class="prog-fill" style="width:61%;background:linear-gradient(90deg,#4c1d95,#a78bfa);"></div></div><span class="prog-val" style="color:#c4b5fd;">9.7%</span></div>
+          <div class="prog-row"><span class="prog-lbl">Bedrooms</span><div class="prog-bg"><div class="prog-fill" style="width:50%;background:linear-gradient(90deg,#164e63,#06b6d4);"></div></div><span class="prog-val" style="color:#67e8f9;">8.0%</span></div>
+        </div>
+        <div style="margin-top:12px;padding:9px 12px;background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.15);border-radius:8px;font-size:12px;color:var(--muted2);line-height:1.6;">
+          <strong style="color:#60a5fa;">Key finding:</strong> District location outweighs area and bedrooms combined &mdash; the strongest individual predictor.
+        </div>
+      </div>
+      <div class="card" style="border-top:2px solid #3b82f6;">
+        <div class="card-label" style="color:#60a5fa;">Dataset &mdash; 11,818 Jeddah Listings</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:4px;">
+          <div style="text-align:center;padding:10px;background:rgba(59,130,246,0.05);border:1px solid rgba(59,130,246,0.12);border-radius:8px;">
+            <div style="font-size:20px;font-weight:800;color:#60a5fa;line-height:1;">75</div>
+            <div style="font-size:10px;color:var(--muted);margin-top:3px;text-transform:uppercase;letter-spacing:0.5px;">Districts</div>
+          </div>
+          <div style="text-align:center;padding:10px;background:rgba(59,130,246,0.05);border:1px solid rgba(59,130,246,0.12);border-radius:8px;">
+            <div style="font-size:20px;font-weight:800;color:#60a5fa;line-height:1;">60+</div>
+            <div style="font-size:10px;color:var(--muted);margin-top:3px;text-transform:uppercase;letter-spacing:0.5px;">Features</div>
+          </div>
+          <div style="text-align:center;padding:10px;background:rgba(59,130,246,0.05);border:1px solid rgba(59,130,246,0.12);border-radius:8px;">
+            <div style="font-size:20px;font-weight:800;color:#60a5fa;line-height:1;">4&times;</div>
+            <div style="font-size:10px;color:var(--muted);margin-top:3px;text-transform:uppercase;letter-spacing:0.5px;">Price Tier Gap</div>
+          </div>
+        </div>
+        <div style="margin-top:10px;padding:9px 12px;background:rgba(59,130,246,0.04);border:1px solid rgba(59,130,246,0.12);border-radius:8px;font-size:11px;color:var(--muted2);line-height:1.6;">
+          SAR 10k &ndash; 160k range &middot; 63% of listings under SAR 40k &middot; Multilingual descriptions (AR/EN)
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="insights-section" style="--accent-color:#3b82f6;">
+    <div class="insights-title" style="color:#60a5fa;">
+      <svg fill="none" stroke="#3b82f6" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+      Key Insights from the Data
+    </div>
+    <div class="insights-grid">
+      <div class="insight-item">
+        <div class="insight-icon">&#x1F4CD;</div>
+        <div class="insight-text"><strong>Location outweighs size.</strong> Moving from a mid-tier to a premium district is associated with a larger rent increase than doubling apartment area.</div>
+      </div>
+      <div class="insight-item">
+        <div class="insight-icon">&#x1F30A;</div>
+        <div class="insight-text"><strong>A coastal premium is evident.</strong> Ash Shati median (SAR 70k) is ~4&times; Al-Faruq (18k) &mdash; a gap that persists across most apartment sizes.</div>
+      </div>
+      <div class="insight-item">
+        <div class="insight-icon">&#x1F5E3;&#xFE0F;</div>
+        <div class="insight-text"><strong>Arabic NLP adds real signal.</strong> Multilingual sentence embeddings contribute ~26.9% of model importance &mdash; listing text quality is a meaningful predictor.</div>
+      </div>
+      <div class="insight-item">
+        <div class="insight-icon">&#x2705;</div>
+        <div class="insight-text"><strong>Stable generalization.</strong> CV R&sup2; = 0.722 &plusmn; 0.006 across 5 folds &mdash; low variance indicates the model captures patterns, not noise.</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
 <!-- FOOTER -->
 <footer class="footer">
   <div style="max-width:560px;margin:0 auto 32px;">
@@ -1128,7 +1297,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 
 <script data-cfasync="false" src="file:///C:/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="file:///C:/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false">
 function goTo(id){ document.querySelector(id).scrollIntoView({behavior:'smooth'}); }
-const secs=['#about','#s1','#s2','#s4'];
+const secs=['#about','#s1','#s2','#s4','#s5'];
 const navBtns=document.querySelectorAll('.nav-item');
 window.addEventListener('scroll',()=>{
   let cur='';
