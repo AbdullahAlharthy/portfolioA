@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jeddah Apartment Rent Predictor — Abdullah Alharthi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+:root{
+  --ink:#0e0f11;--ink2:#1c1e23;
+  --paper:#f5f3ee;--paper2:#ece9e2;--paper3:#e4e0d8;
+  --rule:#d8d3c9;--muted:#8a8478;--muted2:#5c574f;
+  --accent:#c8440a;--accent2:#1a4fd6;--accent3:#1a7a4a;
+  --text:#1c1e23;
+  --font-mono:'JetBrains Mono','Courier New',monospace;
+  --font-sans:'Inter',system-ui,sans-serif;
+}
+body{font-family:var(--font-sans);background:var(--paper);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;}
+nav{position:sticky;top:0;z-index:100;background:rgba(245,243,238,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--rule);padding:0 48px;height:52px;display:flex;align-items:center;gap:8px;}
+.nav-logo{font-family:var(--font-mono);font-size:12px;font-weight:500;color:var(--muted2);margin-right:auto;letter-spacing:0.05em;text-decoration:none;}
+.nav-logo strong{color:var(--ink);}
+.nav-back{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--muted2);text-decoration:none;padding:6px 12px;border-radius:6px;transition:all 0.2s;}
+.nav-back:hover{color:var(--text);background:var(--paper2);}
+.nav-btns{display:flex;gap:6px;}
+.nav-gh{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--muted2);background:transparent;border:1px solid var(--rule);padding:6px 14px;border-radius:6px;text-decoration:none;transition:all 0.2s;}
+.nav-gh:hover{border-color:var(--ink);color:var(--ink);}
+.nav-demo{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--paper);background:var(--accent3);padding:6px 14px;border-radius:6px;text-decoration:none;transition:background 0.2s;}
+.nav-demo:hover{background:#155e38;}
+.proj-hero{max-width:1280px;margin:0 auto;padding:80px 48px 60px;}
+.proj-eyebrow{font-family:var(--font-mono);font-size:11px;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.proj-eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--muted);}
+.proj-num{font-family:var(--font-mono);font-size:11px;color:var(--accent3);letter-spacing:0.15em;margin-bottom:12px;}
+.proj-title{font-size:clamp(38px,5.5vw,72px);line-height:0.95;letter-spacing:-0.04em;font-weight:900;color:var(--ink);margin-bottom:24px;}
+.proj-title em{font-style:normal;color:var(--accent3);font-weight:300;}
+.proj-subtitle{font-size:17px;line-height:1.7;color:var(--muted2);max-width:600px;font-weight:300;margin-bottom:32px;}
+.proj-subtitle strong{color:var(--text);font-weight:500;}
+.hero-cta-row{display:flex;gap:12px;margin-bottom:40px;flex-wrap:wrap;}
+.cta-demo{display:inline-flex;align-items:center;gap:8px;background:var(--accent3);color:var(--paper);padding:12px 22px;border-radius:8px;font-size:13px;font-weight:500;text-decoration:none;transition:background 0.2s,transform 0.15s;}
+.cta-demo:hover{background:#155e38;transform:translateY(-1px);}
+.cta-gh{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--muted2);border:1px solid var(--rule);padding:12px 22px;border-radius:8px;font-size:13px;font-weight:500;text-decoration:none;transition:all 0.2s;}
+.cta-gh:hover{border-color:var(--ink);color:var(--ink);}
+.metrics-bar{display:flex;gap:0;border:1px solid var(--rule);border-radius:12px;overflow:hidden;background:var(--paper2);margin-bottom:64px;}
+.metric-cell{flex:1;padding:20px 24px;border-right:1px solid var(--rule);text-align:center;}
+.metric-cell:last-child{border-right:none;}
+.mc-val{font-size:32px;font-weight:800;letter-spacing:-0.04em;line-height:1;margin-bottom:6px;}
+.mc-lbl{font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);}
+.content{max-width:1280px;margin:0 auto;padding:0 48px 100px;}
+.content-grid{display:grid;grid-template-columns:1fr 340px;gap:64px;align-items:start;}
+.case-section{margin-bottom:48px;}
+.case-label{font-family:var(--font-mono);font-size:10px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+.case-label::after{content:'';flex:1;height:1px;background:var(--rule);}
+.case-h2{font-size:clamp(22px,2.8vw,32px);font-weight:800;letter-spacing:-0.03em;color:var(--ink);margin-bottom:16px;line-height:1.1;}
+.case-body{font-size:15px;line-height:1.85;color:var(--muted2);font-weight:300;}
+.case-body strong{color:var(--text);font-weight:500;}
+.case-body p+p{margin-top:16px;}
+.sidebar{display:flex;flex-direction:column;gap:20px;}
+.side-card{background:var(--paper2);border:1px solid var(--rule);border-radius:12px;padding:22px;}
+.side-card-title{font-family:var(--font-mono);font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+.tech-list{display:flex;flex-wrap:wrap;gap:6px;}
+.tech-pill{font-family:var(--font-mono);font-size:11px;padding:4px 10px;border-radius:5px;background:var(--paper3);color:var(--muted2);border:1px solid var(--rule);}
+.pbar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.pbar-lbl{font-size:11px;color:var(--muted2);min-width:110px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.pbar-bg{flex:1;height:5px;background:var(--paper3);border-radius:10px;overflow:hidden;}
+.pbar-fill{height:100%;border-radius:10px;}
+.pbar-val{font-family:var(--font-mono);font-size:11px;color:var(--muted);min-width:36px;text-align:right;}
+.infobox{padding:12px 16px;border-radius:9px;background:var(--paper3);border-left:3px solid;font-size:13px;line-height:1.65;color:var(--muted2);}
+.infobox strong{color:var(--text);font-weight:500;}
+.gh-btn{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--paper);background:var(--ink);text-decoration:none;border-radius:8px;padding:10px 18px;transition:background 0.2s;width:100%;justify-content:center;margin-bottom:8px;}
+.gh-btn:hover{background:var(--ink2);}
+.demo-btn{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--paper);background:var(--accent3);text-decoration:none;border-radius:8px;padding:10px 18px;transition:background 0.2s;width:100%;justify-content:center;}
+.demo-btn:hover{background:#155e38;}
+.stat-pair{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:4px;}
+.stat-box{padding:14px;background:var(--paper);border:1px solid var(--rule);border-radius:9px;text-align:center;}
+.sb-val{font-size:24px;font-weight:800;letter-spacing:-0.03em;line-height:1;color:var(--accent3);}
+.sb-lbl{font-family:var(--font-mono);font-size:9px;color:var(--muted);margin-top:3px;text-transform:uppercase;letter-spacing:0.1em;}
+.rule-line{height:1px;background:var(--rule);max-width:1280px;margin:0 auto;}
+footer{border-top:1px solid var(--rule);padding:36px 48px;max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.footer-name{font-family:var(--font-mono);font-size:12px;color:var(--muted);}
+.fade-up{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.fade-up.visible{opacity:1;transform:none;}
+@media(max-width:900px){
+  nav{padding:0 20px;}
+  .proj-hero{padding:60px 24px 40px;}
+  .content{padding:0 24px 72px;}
+  .content-grid{grid-template-columns:1fr;}
+  .metrics-bar{flex-wrap:wrap;}
+  .metric-cell{flex:1 1 45%;}
+  footer{flex-direction:column;gap:8px;text-align:center;padding:24px;}
+  .nav-btns{gap:4px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html"><strong>Abdullah</strong> Alharthi</a>
+  <a class="nav-back" href="index.html">
+    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+    All Projects
+  </a>
+  <div class="nav-btns">
+    <a class="nav-gh" href="https://github.com/AbdullahAlharthy/jeddah-rent-predictor" target="_blank" rel="noopener">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      GitHub
+    </a>
+    <a class="nav-demo" href="jeddah-dashboard.html" target="_blank">
+      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Live Demo
+    </a>
+  </div>
+</nav>
+
+<div class="proj-hero">
+  <div class="proj-eyebrow">ML · NLP · Market Analytics</div>
+  <div class="proj-num">04 — Real Estate · Regression · Arabic NLP</div>
+  <h1 class="proj-title">Jeddah<br>Apartment<br><em>Rent Predictor</em></h1>
+  <p class="proj-subtitle"><strong>11,818 real Jeddah listings</strong> scraped, cleaned, and modeled. Arabic/English NLP embeddings, 60+ engineered features, and a live interactive dashboard for the Jeddah rental market.</p>
+
+  <div class="hero-cta-row">
+    <a class="cta-demo" href="jeddah-dashboard.html" target="_blank">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Open Live Dashboard
+    </a>
+    <a class="cta-gh" href="https://github.com/AbdullahAlharthy/jeddah-rent-predictor" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      View on GitHub
+    </a>
+  </div>
+
+  <div class="metrics-bar fade-up">
+    <div class="metric-cell"><div class="mc-val" style="color:var(--accent3);">0.758</div><div class="mc-lbl">Test R²</div></div>
+    <div class="metric-cell"><div class="mc-val" style="color:var(--accent3);">13.8%</div><div class="mc-lbl">MAPE</div></div>
+    <div class="metric-cell"><div class="mc-val">SAR 468</div><div class="mc-lbl">MAE / month</div></div>
+    <div class="metric-cell"><div class="mc-val">0.722</div><div class="mc-lbl">CV R² ±0.006</div></div>
+    <div class="metric-cell"><div class="mc-val">11,818</div><div class="mc-lbl">Listings</div></div>
+  </div>
+</div>
+
+<div class="rule-line"></div>
+
+<div class="content">
+  <div class="content-grid">
+
+    <div class="main-col">
+
+      <div class="case-section fade-up">
+        <div class="case-label">The Problem</div>
+        <h2 class="case-h2">Jeddah's rental market is opaque</h2>
+        <div class="case-body">
+          <p>Jeddah has no transparent pricing reference for apartments. Listings exist in Arabic and English, prices vary wildly by district, and most people rent without any way to check if the price they're seeing is fair. A coastal apartment in Al-Shati and a budget unit in an inland district can differ by 4× — but renters often have no idea which bracket they're in.</p>
+          <p>The goal was to build a model that estimates rent from apartment specs alone — and to make the insights usable through an interactive dashboard anyone can explore.</p>
+        </div>
+      </div>
+
+      <div class="case-section fade-up">
+        <div class="case-label">Data & Features</div>
+        <h2 class="case-h2">11,818 real listings, 60+ engineered features</h2>
+        <div class="case-body">
+          <p>I scraped 11,818 real Jeddah rental listings, then spent the majority of the project time on cleaning and feature engineering. Raw listing data is messy: duplicate entries, inconsistent area units, missing values, and Arabic descriptions mixed with English.</p>
+          <p>The most interesting feature engineering was the <strong>NLP embeddings</strong>. Listing descriptions in Arabic and English were encoded using a multilingual Sentence Transformer model (768-dimensional embeddings), then compressed to 128 dimensions via PCA. This let the model use the qualitative content of a listing — phrases like "sea view" or "fully furnished" in either language — as a predictive signal.</p>
+          <p>Other engineered features included: district-level median rent, price-per-sqm by area tier, amenity scoring (pool, gym, parking weighted by their individual price associations), floor-level encoding, and a listing freshness score. All feature transforms were strictly fitted on training data only — no leakage.</p>
+        </div>
+      </div>
+
+      <div class="case-section fade-up">
+        <div class="case-label">Modeling</div>
+        <h2 class="case-h2">CatBoost + Optuna HPO, 40 trials</h2>
+        <div class="case-body">
+          <p>CatBoost was selected as the primary model after baseline comparisons with LightGBM, XGBoost, and Ridge regression. CatBoost's native handling of categorical features (district names, property types) avoided the need for manual encoding of high-cardinality columns, which mattered here.</p>
+          <p>Hyperparameter optimization used Optuna for 40 trials on a held-out validation set, tuning learning rate, depth, regularization, and iteration count. Final evaluation used <strong>5-fold stratified cross-validation</strong> (stratified by district tier) to ensure results were stable across geographic segments of the market.</p>
+          <p>SHAP values were computed post-training to understand which features drove individual predictions. District location alone accounted for ~16% of model importance — more than area and bedrooms combined. The NLP embeddings contributed ~27% of total importance as a group, confirming that qualitative listing content carries real pricing signal.</p>
+        </div>
+      </div>
+
+      <div class="case-section fade-up">
+        <div class="case-label">Results & Dashboard</div>
+        <h2 class="case-h2">R² = 0.758 with a live interactive map</h2>
+        <div class="case-body">
+          <p>The final model reached <strong>R² = 0.758 on test data</strong> and CV R² = 0.722 ± 0.006 across 5 folds — a stable result that generalizes across Jeddah's rental market. MAPE of 13.8% means predictions are typically within about SAR 468/month of actual rent across all price levels.</p>
+          <p>The prediction spread widens above SAR 60k/year — the luxury segment has fewer training samples, so predictions carry more uncertainty there. This is an honest limitation the model can't fully overcome without more high-end listing data.</p>
+          <p>The <strong>interactive dashboard</strong> includes a Voronoi district map color-coded by median annual rent (SAR 18k–72k), a live rent estimator where users can input apartment specs, and district comparison charts. The coastal Al-Shati area shows approximately 4× the median rent of inland budget districts.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="sidebar">
+
+      <div class="side-card fade-up" style="border-color:var(--accent3);">
+        <div class="side-card-title">Live Dashboard</div>
+        <p style="font-size:13px;color:var(--muted2);line-height:1.65;margin-bottom:14px;">Interactive Voronoi district map + live rent estimator for Jeddah apartments.</p>
+        <a class="demo-btn" href="jeddah-dashboard.html" target="_blank">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Open Live Dashboard
+        </a>
+      </div>
+
+      <div class="side-card fade-up">
+        <div class="side-card-title">Model Performance</div>
+        <div class="stat-pair">
+          <div class="stat-box"><div class="sb-val">0.758</div><div class="sb-lbl">Test R²</div></div>
+          <div class="stat-box"><div class="sb-val">0.722</div><div class="sb-lbl">CV R²</div></div>
+        </div>
+      </div>
+
+      <div class="side-card fade-up">
+        <div class="side-card-title">SHAP Feature Groups</div>
+        <div class="pbar-row">
+          <span class="pbar-lbl">NLP Embeddings</span>
+          <div class="pbar-bg"><div class="pbar-fill" style="width:100%;background:var(--accent3);"></div></div>
+          <span class="pbar-val" style="color:var(--accent3);">26.9%</span>
+        </div>
+        <div class="pbar-row">
+          <span class="pbar-lbl">Other engineered</span>
+          <div class="pbar-bg"><div class="pbar-fill" style="width:100%;background:var(--muted);opacity:0.4;"></div></div>
+          <span class="pbar-val">26.9%</span>
+        </div>
+        <div class="pbar-row">
+          <span class="pbar-lbl">Structural</span>
+          <div class="pbar-bg"><div class="pbar-fill" style="width:86%;background:var(--accent3);opacity:0.7;"></div></div>
+          <span class="pbar-val">23.2%</span>
+        </div>
+        <div class="pbar-row">
+          <span class="pbar-lbl">Location</span>
+          <div class="pbar-bg"><div class="pbar-fill" style="width:59%;background:var(--accent2);"></div></div>
+          <span class="pbar-val" style="color:var(--accent2);">15.9%</span>
+        </div>
+        <div class="pbar-row">
+          <span class="pbar-lbl">Amenity Score</span>
+          <div class="pbar-bg"><div class="pbar-fill" style="width:26%;background:#b8a020;"></div></div>
+          <span class="pbar-val">7.1%</span>
+        </div>
+        <div class="infobox" style="border-left-color:var(--accent2);margin-top:10px;">
+          <strong>District location alone = ~16% of model importance</strong> — more than area and bedrooms combined.
+        </div>
+      </div>
+
+      <div class="side-card fade-up">
+        <div class="side-card-title">Stack</div>
+        <div class="tech-list">
+          <span class="tech-pill">CatBoost</span>
+          <span class="tech-pill">Sentence Transformers</span>
+          <span class="tech-pill">Optuna</span>
+          <span class="tech-pill">PCA</span>
+          <span class="tech-pill">SHAP</span>
+          <span class="tech-pill">Leaflet.js</span>
+          <span class="tech-pill">Scikit-learn</span>
+          <span class="tech-pill">Pandas</span>
+          <span class="tech-pill">BeautifulSoup</span>
+        </div>
+      </div>
+
+      <div class="side-card fade-up">
+        <div class="side-card-title">Code</div>
+        <a class="gh-btn" href="https://github.com/AbdullahAlharthy/jeddah-rent-predictor" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          View on GitHub
+        </a>
+      </div>
+
+      <div class="side-card fade-up" style="background:var(--paper3);">
+        <div class="side-card-title">Dataset</div>
+        <div style="font-size:13px;color:var(--muted2);line-height:1.7;">
+          <strong style="color:var(--text);">Jeddah Rental Listings (Scraped)</strong><br>
+          11,818 listings · 75 districts · Arabic + English<br>
+          Collected from local real estate platforms
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="rule-line"></div>
+<footer>
+  <div class="footer-name">Abdullah Hani Alharthi · B.Sc. Data Science · University of Jeddah</div>
+  <a href="index.html" style="font-size:12px;color:var(--muted);text-decoration:none;">← Back to Portfolio</a>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+setTimeout(() => document.querySelectorAll('.proj-hero .fade-up').forEach(el => el.classList.add('visible')), 100);
+</script>
+</body>
+</html>

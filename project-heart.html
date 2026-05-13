@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heart Disease Prediction — Abdullah Alharthi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+:root{
+  --ink:#0e0f11;--ink2:#1c1e23;
+  --paper:#f5f3ee;--paper2:#ece9e2;--paper3:#e4e0d8;
+  --rule:#d8d3c9;--muted:#8a8478;--muted2:#5c574f;
+  --accent:#c8440a;--accent2:#1a4fd6;--accent3:#1a7a4a;
+  --text:#1c1e23;
+  --font-mono:'JetBrains Mono','Courier New',monospace;
+  --font-sans:'Inter',system-ui,sans-serif;
+}
+body{font-family:var(--font-sans);background:var(--paper);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;}
+nav{position:sticky;top:0;z-index:100;background:rgba(245,243,238,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--rule);padding:0 48px;height:52px;display:flex;align-items:center;gap:8px;}
+.nav-logo{font-family:var(--font-mono);font-size:12px;font-weight:500;color:var(--muted2);margin-right:auto;letter-spacing:0.05em;text-decoration:none;}
+.nav-logo strong{color:var(--ink);}
+.nav-back{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--muted2);text-decoration:none;padding:6px 12px;border-radius:6px;transition:all 0.2s;}
+.nav-back:hover{color:var(--text);background:var(--paper2);}
+.nav-gh{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--paper);background:var(--ink);padding:6px 14px;border-radius:6px;text-decoration:none;transition:background 0.2s;}
+.nav-gh:hover{background:var(--accent);}
+.proj-hero{max-width:1280px;margin:0 auto;padding:80px 48px 60px;}
+.proj-eyebrow{font-family:var(--font-mono);font-size:11px;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.proj-eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--muted);}
+.proj-num{font-family:var(--font-mono);font-size:11px;color:var(--accent);letter-spacing:0.15em;margin-bottom:12px;}
+.proj-title{font-size:clamp(42px,6vw,76px);line-height:0.95;letter-spacing:-0.04em;font-weight:900;color:var(--ink);margin-bottom:24px;}
+.proj-title em{font-style:normal;color:var(--accent);font-weight:300;}
+.proj-subtitle{font-size:17px;line-height:1.7;color:var(--muted2);max-width:600px;font-weight:300;margin-bottom:40px;}
+.proj-subtitle strong{color:var(--text);font-weight:500;}
+.metrics-bar{display:flex;gap:0;border:1px solid var(--rule);border-radius:12px;overflow:hidden;background:var(--paper2);margin-bottom:64px;}
+.metric-cell{flex:1;padding:20px 24px;border-right:1px solid var(--rule);text-align:center;}
+.metric-cell:last-child{border-right:none;}
+.mc-val{font-size:32px;font-weight:800;letter-spacing:-0.04em;line-height:1;margin-bottom:6px;}
+.mc-lbl{font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);}
+.content{max-width:1280px;margin:0 auto;padding:0 48px 100px;}
+.content-grid{display:grid;grid-template-columns:1fr 340px;gap:64px;align-items:start;}
+.case-section{margin-bottom:48px;}
+.case-label{font-family:var(--font-mono);font-size:10px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+.case-label::after{content:'';flex:1;height:1px;background:var(--rule);}
+.case-h2{font-size:clamp(22px,2.8vw,32px);font-weight:800;letter-spacing:-0.03em;color:var(--ink);margin-bottom:16px;line-height:1.1;}
+.case-body{font-size:15px;line-height:1.85;color:var(--muted2);font-weight:300;}
+.case-body strong{color:var(--text);font-weight:500;}
+.case-body p+p{margin-top:16px;}
+.sidebar{display:flex;flex-direction:column;gap:20px;}
+.side-card{background:var(--paper2);border:1px solid var(--rule);border-radius:12px;padding:22px;}
+.side-card-title{font-family:var(--font-mono);font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+.tech-list{display:flex;flex-wrap:wrap;gap:6px;}
+.tech-pill{font-family:var(--font-mono);font-size:11px;padding:4px 10px;border-radius:5px;background:var(--paper3);color:var(--muted2);border:1px solid var(--rule);}
+.cmp-table{width:100%;border-collapse:collapse;font-size:12px;}
+.cmp-table th{text-align:left;padding:7px 10px;font-family:var(--font-mono);font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--rule);font-weight:500;}
+.cmp-table td{padding:8px 10px;border-bottom:1px solid var(--paper3);color:var(--muted2);font-size:12px;}
+.cmp-table tr:last-child td{border-bottom:none;}
+.cmp-table .best td{color:var(--text);font-weight:600;}
+.cmp-table .best .hl{color:var(--accent);font-weight:700;}
+.cluster-row{display:flex;gap:8px;margin-top:12px;}
+.cluster-pill{flex:1;padding:12px;border-radius:9px;border:1px solid var(--rule);text-align:center;background:var(--paper);}
+.cp-label{font-family:var(--font-mono);font-size:9px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;}
+.cp-val{font-size:22px;font-weight:800;color:var(--ink);letter-spacing:-0.03em;}
+.cp-desc{font-size:10px;color:var(--muted);margin-top:3px;}
+.infobox{padding:12px 16px;border-radius:9px;background:var(--paper3);border-left:3px solid;font-size:13px;line-height:1.65;color:var(--muted2);}
+.infobox strong{color:var(--text);font-weight:500;}
+.gh-btn{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--paper);background:var(--ink);text-decoration:none;border-radius:8px;padding:10px 18px;transition:background 0.2s;width:100%;justify-content:center;margin-top:4px;}
+.gh-btn:hover{background:var(--accent);}
+.rule-line{height:1px;background:var(--rule);max-width:1280px;margin:0 auto;}
+footer{border-top:1px solid var(--rule);padding:36px 48px;max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.footer-name{font-family:var(--font-mono);font-size:12px;color:var(--muted);}
+.fade-up{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.fade-up.visible{opacity:1;transform:none;}
+@media(max-width:900px){
+  nav{padding:0 20px;}
+  .proj-hero{padding:60px 24px 40px;}
+  .content{padding:0 24px 72px;}
+  .content-grid{grid-template-columns:1fr;}
+  .metrics-bar{flex-wrap:wrap;}
+  .metric-cell{flex:1 1 45%;}
+  footer{flex-direction:column;gap:8px;text-align:center;padding:24px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html"><strong>Abdullah</strong> Alharthi</a>
+  <a class="nav-back" href="index.html">
+    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+    All Projects
+  </a>
+  <a class="nav-gh" href="https://github.com/AbdullahAlharthy/heart-disease-prediction" target="_blank" rel="noopener">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+    GitHub
+  </a>
+</nav>
+
+<div class="proj-hero">
+  <div class="proj-eyebrow">Data Mining · Clinical Data</div>
+  <div class="proj-num">02 — Classification + Clustering</div>
+  <h1 class="proj-title">Heart<br><em>Disease</em><br>Prediction</h1>
+  <p class="proj-subtitle">Five clinical datasets merged into <strong>1,889 clean records</strong>. Tested 12 decision tree configurations and used K-Means clustering to find natural patient subgroups.</p>
+
+  <div class="metrics-bar fade-up">
+    <div class="metric-cell"><div class="mc-val" style="color:var(--accent);">85%</div><div class="mc-lbl">Accuracy</div></div>
+    <div class="metric-cell"><div class="mc-val" style="color:var(--accent);">0.87</div><div class="mc-lbl">Overall Score</div></div>
+    <div class="metric-cell"><div class="mc-val">12</div><div class="mc-lbl">DT Configs</div></div>
+    <div class="metric-cell"><div class="mc-val">1,889</div><div class="mc-lbl">Clean Records</div></div>
+    <div class="metric-cell"><div class="mc-val">5</div><div class="mc-lbl">Datasets Merged</div></div>
+  </div>
+</div>
+
+<div class="rule-line"></div>
+
+<div class="content">
+  <div class="content-grid">
+
+    <div class="main-col">
+
+      <div class="case-section fade-up">
+        <div class="case-label">The Problem</div>
+        <h2 class="case-h2">Five datasets, one messy reality</h2>
+        <div class="case-body">
+          <p>Five public clinical datasets existed for heart disease — each with different formats, different column names, different scales, and missing values throughout. The UCI Cleveland dataset is the famous one, but using it alone means leaving out thousands of additional patient records. The first challenge was getting them into a single, clean, usable format.</p>
+          <p>Once merged, the question was: which decision tree setup generalizes best, and do natural patient subgroups exist in the data that a supervised model might miss?</p>
+        </div>
+      </div>
+
+      <div class="case-section fade-up">
+        <div class="case-label">What I Did</div>
+        <h2 class="case-h2">Systematic DT comparison + unsupervised clustering</h2>
+        <div class="case-body">
+          <p>After cleaning and merging all 5 datasets into <strong>1,889 records with 14 clinical features</strong>, I used RapidMiner to run a structured comparison of decision tree configurations. I varied two things: the splitting criterion (Information Gain, Gini Index, Information Gain Ratio) and the minimum leaf size (3.5%, 4.5%, 5.0%, 6.0% of training data). That's 12 configurations total, all evaluated on the same held-out test set.</p>
+          <p>For clustering, I applied K-Means with K ranging from 2 to 5, using the Elbow Method on within-cluster sum of squares to choose K. The goal was to see if the data naturally separated into clinically meaningful patient groups without using the diagnosis label at all.</p>
+        </div>
+      </div>
+
+      <div class="case-section fade-up">
+        <div class="case-label">Key Findings</div>
+        <h2 class="case-h2">Smaller leaf sizes consistently win</h2>
+        <div class="case-body">
+          <p>The best configuration was <strong>Information Gain with 3.5% minimum leaf size</strong> — achieving 85% accuracy and an overall score of 0.87. The pattern held across all three splitting criteria: smaller leaf sizes (more specific splits) outperformed larger ones, suggesting the clinical decision boundaries are genuinely granular and benefit from more refined splits.</p>
+          <p>K-Means selected <strong>K=3</strong> via the Elbow Method, revealing three distinct patient clusters. The key separating features were thalassemia type, chest pain category (atypical angina specifically), and ST segment slope — consistent with clinical literature on cardiac risk stratification. This was an unsupervised confirmation of features that the supervised model also weighted heavily.</p>
+          <p>Cluster 0 (42%) represented younger patients with iron-type thalassemia and lower risk profiles. Cluster 1 (3%) was a small group of outliers. Cluster 2 (55%) was the high-risk group, predominantly characterized by ST slope abnormalities.</p>
+        </div>
+      </div>
+
+
+
+    </div>
+
+    <div class="sidebar">
+
+      <div class="side-card fade-up">
+        <div class="side-card-title">Stack</div>
+        <div class="tech-list">
+          <span class="tech-pill">RapidMiner</span>
+          <span class="tech-pill">Decision Tree</span>
+          <span class="tech-pill">K-Means</span>
+          <span class="tech-pill">EDA</span>
+          <span class="tech-pill">Statistical Analysis</span>
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">Pandas</span>
+          <span class="tech-pill">Matplotlib</span>
+        </div>
+      </div>
+
+      <div class="side-card fade-up">
+        <div class="side-card-title">DT Configs — Overall Score</div>
+        <table class="cmp-table">
+          <thead><tr><th>Criterion</th><th>3.5%</th><th>4.5%</th><th>5.0%</th><th>6.0%</th></tr></thead>
+          <tbody>
+            <tr class="best"><td>Info Gain</td><td class="hl">0.87 ★</td><td>0.86</td><td>0.85</td><td>0.84</td></tr>
+            <tr><td>Gini Index</td><td>0.86</td><td>0.85</td><td>0.84</td><td>0.83</td></tr>
+            <tr><td>Info Ratio</td><td>0.85</td><td>0.84</td><td>0.83</td><td>0.82</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="side-card fade-up">
+        <div class="side-card-title">K-Means — K=3 Selected</div>
+        <div class="cluster-row">
+          <div class="cluster-pill">
+            <div class="cp-label">Cluster 0</div>
+            <div class="cp-val" style="color:var(--accent);">42%</div>
+            <div class="cp-desc">Young · iron type</div>
+          </div>
+          <div class="cluster-pill" style="border-color:var(--accent);background:rgba(200,68,10,0.04);">
+            <div class="cp-label">Cluster 1</div>
+            <div class="cp-val" style="color:var(--accent);">3%</div>
+            <div class="cp-desc">Outliers</div>
+          </div>
+          <div class="cluster-pill">
+            <div class="cp-label">Cluster 2</div>
+            <div class="cp-val" style="color:var(--accent);">55%</div>
+            <div class="cp-desc">High-risk · ST</div>
+          </div>
+        </div>
+        <div class="infobox" style="border-left-color:var(--accent);margin-top:12px;">
+          <strong>Key separating features:</strong> Thalassemia type, chest pain category, and ST segment slope — consistent with clinical cardiac risk literature.
+        </div>
+      </div>
+
+      <div class="side-card fade-up">
+        <div class="side-card-title">Code</div>
+        <a class="gh-btn" href="https://github.com/AbdullahAlharthy/heart-disease-prediction" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          View on GitHub
+        </a>
+      </div>
+
+      <div class="side-card fade-up" style="background:var(--paper3);">
+        <div class="side-card-title">Dataset</div>
+        <div style="font-size:13px;color:var(--muted2);line-height:1.7;">
+          <strong style="color:var(--text);">UCI Heart Disease (5 merged datasets)</strong><br>
+          Cleveland · Hungarian · Switzerland · VA · Statlog<br>
+          1,889 clean records · 14 features
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="rule-line"></div>
+<footer>
+  <div class="footer-name">Abdullah Hani Alharthi · B.Sc. Data Science · University of Jeddah</div>
+  <a href="index.html" style="font-size:12px;color:var(--muted);text-decoration:none;">← Back to Portfolio</a>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+setTimeout(() => document.querySelectorAll('.proj-hero .fade-up').forEach(el => el.classList.add('visible')), 100);
+</script>
+</body>
+</html>
